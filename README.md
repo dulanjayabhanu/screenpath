@@ -175,6 +175,7 @@ ScreenPath is built using modern frontend technologies.
 |Styling Framework         |Tailwind CSS                  |<img src="https://skills.syvixor.com/api/icons?perline=15&i=tailwindcss" /> |
 |UI Components             |shadcn/ui                     |<img src="https://skills.syvixor.com/api/icons?perline=15&i=shadcnui" />    |
 |Data Fetching and Caching |TanStack Query                |<img src="https://skills.syvixor.com/api/icons?perline=15&i=reactquery" />  |
+|Runtime Validation        |Zod                           |<img src="https://skills.syvixor.com/api/icons?perline=15&i=zod" />         |
 |Routing                   |React Router                  |<img src="https://skills.syvixor.com/api/icons?perline=15&i=reactrouter" /> |
 |External Data Source      |The Movie Database (TMDB) API |<img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg" width=40 /> |
 
