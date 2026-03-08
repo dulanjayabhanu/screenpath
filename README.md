@@ -1,3 +1,7 @@
+<div align="center">
+    <img src="/docs/images/screenpath-main-poster.webp" alt"ScreenPath main poster" />
+</div>
+
 # ScreenPath
 ### Your calm path to the perfect movie
 
@@ -8,6 +12,12 @@ ScreenPath is a focused movie discovery platform designed to help users find fil
 The application provides a clean and minimal interface that allows users to search, filter, and explore movies while maintaining clarity and simplicity. By reducing visual noise and unnecessary interface elements, ScreenPath aims to make the movie discovery process efficient and comfortable.
 
 ScreenPath integrates with the TMDB API to retrieve movie data and presents it through a structured and distraction-free browsing experience.
+
+<br>
+
+<div align="center">
+    <img src="/docs/images/screenpath-feature-card.webp" alt"ScreenPath feature card" />
+</div>
 
 <br>
 
@@ -290,3 +300,12 @@ All movie data and media content are provided by [The Movie Database](https://ww
 This project is licensed under the MIT License.
 
 See the [LICENSE](LICENSE) file for complete license details.
+
+<br>
+
+<hr>
+
+<div align="center">
+    <img src="/docs/images/screenpath-logo.svg" alt="ScreenPath logo" width=150px />
+    <h3>ScreenPath</h3>
+</div>
