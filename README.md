@@ -2,6 +2,14 @@
     <img src="/docs/images/screenpath-main-poster.webp" alt"ScreenPath main poster" />
 </div>
 
+<br>
+
+<div align="center">
+    <a href="https://screenpath.vercel.app" target="_blank" rel="noopener noreferrer">
+        <img src="https://img.shields.io/badge/Live_Demo-Open_App-0a0a0a?style=for-the-badge&logo=vercel&logoColor=fafafa&labelColor=171717&color=737373" alt="ScreenPath live demo button" />
+    </a>
+</div>
+
 # ScreenPath
 ### Your calm path to the perfect movie
 
