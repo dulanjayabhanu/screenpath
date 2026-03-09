@@ -9,6 +9,8 @@ import RootLayout from "@/layouts/RootLayout.tsx";
 import PrivacyPage from "@/pages/PrivacyPage.tsx";
 import TermsPage from "@/pages/TermsPage.tsx";
 import FileNotFoundPage from "@/pages/404Page.tsx";
+import {Analytics} from "@vercel/analytics/react";
+import {SpeedInsights} from "@vercel/speed-insights/react";
 
 const queryClient = new QueryClient()
 
@@ -42,6 +44,8 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
       <QueryClientProvider client={queryClient}>
           <RouterProvider router={router} />
+          <Analytics />
+          <SpeedInsights />
       </QueryClientProvider>
   </StrictMode>,
 )
