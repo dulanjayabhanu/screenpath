@@ -36,6 +36,21 @@
     <meta name="twitter:title" content="ScreenPath — Discover Movies Effortlessly" />
     <meta name="twitter:description" content="Explore trending movies and detailed film information with ScreenPath." />
     <meta name="twitter:image" content="https://screenpath.vercel.app/twitter-card.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "ScreenPath",
+        "url": "https://screenpath.vercel.app",
+        "description": "Discover movies, explore ratings, and find your next watch with ScreenPath.",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://screenpath.vercel.app/?query={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
