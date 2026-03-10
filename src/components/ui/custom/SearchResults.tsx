@@ -10,6 +10,7 @@ const SearchResults = (
     {
         searchedMovieProps,
         paginationHookProps,
+        languageData,
         movieResultRef,
     }: SearchResultsProps) => {
 
@@ -38,9 +39,22 @@ const SearchResults = (
                     <div className="flex justify-center items-center col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4 py-15">
                         <MovieSearchEmpty />
                     </div>
-                ) : searchedMovieProps.movieResponse.results.map((movie) => (
-                    <MovieCard key={movie.id} movie={movie}/>
-                ))}
+                ) : searchedMovieProps.movieResponse.results.map((movie) => {
+                    const foundedLanguage = languageData.find((language) =>
+                        language.iso_639_1 === movie.original_language
+                    )
+                    return (
+                        <MovieCard
+                            key = {movie.id}
+                            movie = {movie}
+                            language = {foundedLanguage || {
+                                iso_639_1: "",
+                                english_name: "",
+                                name: "",
+                            }}
+                        />
+                    )
+                })}
             </div>
             {!searchedMovieProps.isError ? (
                 <MoviePagination

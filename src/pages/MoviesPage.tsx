@@ -23,6 +23,7 @@ import useWatchVideo from "@/hooks/useWatchVideo.ts";
 import useYoutubeVideoPlayerOpen from "@/hooks/useYoutubeVideoPlayerOpen.ts";
 import {useEffect} from "react";
 import BackToTopFab from "@/components/ui/custom/BackToTopFab.tsx";
+import movieApiLanguageQueryOption from "@/query_options/movieApiLanguageQueryOption.ts";
 
 const MoviesPage = () => {
     const { movieId } = useParams<{ movieId: string }>()
@@ -30,12 +31,17 @@ const MoviesPage = () => {
     const { youtubeVideoPlayerOpen, setYoutubeVideoPlayerOpen } = useYoutubeVideoPlayerOpen()
 
     const { data, isPending, isError } = useQuery(movieApiSingleMovieQueryOption(movieId || "0"))
+    const { data: languageData } = useQuery(movieApiLanguageQueryOption())
+
+    const foundedSingleMovieLanguage = languageData?.find((language) =>
+        language.iso_639_1 === data?.original_language
+    )
 
     useEffect(() => {
         if(isPending) {
-            document.title = "Processing... | ScreenPath"
+            document.title = "Processing... - ScreenPath"
         }else if(data?.title) {
-            document.title = data?.title ? `${data?.title} | ScreenPath` : "Movie Detail | ScreenPath"
+            document.title = data?.title ? `${data?.title} - ScreenPath` : "Movie Details - ScreenPath"
         }
     }, [data, isPending])
 
@@ -51,7 +57,13 @@ const MoviesPage = () => {
                     overview={data?.overview || ""}
                     vote_average={data?.vote_average || 0}
                     origin_country={data?.origin_country || []}
-                    origin_language={data?.original_language || ""}
+                    origin_language={
+                        foundedSingleMovieLanguage ?
+                            foundedSingleMovieLanguage.english_name :
+                            data?.original_language ?
+                                data.original_language :
+                                ""
+                    }
                     runtime={data?.runtime || 0}
                     genres={data?.genres || []}
                     keywords={data?.keywords || {keywords: []}}
@@ -116,6 +128,7 @@ const MoviesPage = () => {
                         total_pages: 0,
                         total_results: 0
                     }}
+                    languageData={languageData || []}
                 />
             </>
         )

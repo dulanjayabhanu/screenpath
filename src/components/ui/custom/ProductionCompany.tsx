@@ -26,12 +26,13 @@ const ProductionCompony = ( { productionCompany }: ProductionCompanyProps ) => {
                                 "/default_company_banner.svg"
 
                             return (
-                                <Item key={company.id} variant="outline" className="relative mx-auto w-full max-w-sm">
+                                <Item key={company.id} variant="outline" className="relative mx-auto w-full max-w-sm group">
                                     <ItemHeader>
                                         <img
                                             src={logoUrl}
                                             alt={company.name}
-                                            className="aspect-square w-full rounded-sm object-contain invert-25 brightness-60 hover:grayscale-0 hover:brightness-95 grayscale dark:brightness-40 dark:hover:brightness-90"
+                                            loading="lazy"
+                                            className="aspect-square w-full rounded-sm object-contain invert-25 brightness-60 group-hover:grayscale-0 group-hover:brightness-95 grayscale dark:brightness-40 dark:group-hover:brightness-90 transition-all duration-300"
                                         />
                                     </ItemHeader>
                                     <ItemContent className="flex flex-col items-center gap-2">

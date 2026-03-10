@@ -63,7 +63,6 @@ const getSearchUrl = (movieSearchProp: MovieSearchProp) => {
 
     url.searchParams.set("region", MOVIE_API_DEFAULT_REGION.toUpperCase())
     url.searchParams.set("certification_country", MOVIE_API_DEFAULT_REGION.toUpperCase())
-
     return url.toString()
 }
 

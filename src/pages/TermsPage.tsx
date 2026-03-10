@@ -10,7 +10,7 @@ import BackToTopFab from "@/components/ui/custom/BackToTopFab.tsx";
 
 const TermsPage = () => {
     useEffect(() => {
-        document.title = "Terms of Service | ScreenPath"
+        document.title = "Terms of Service - ScreenPath"
     }, [])
 
     return (

@@ -25,6 +25,10 @@ import searchFilterDefaultValues from "@/constants/searchFilterDefaultValues.ts"
 import useTesseractOpen from "@/hooks/useTesseractOpen.ts";
 import Tesseract from "@/components/ui/custom/Tesseract.tsx";
 import BackToTopFab from "@/components/ui/custom/BackToTopFab.tsx";
+import movieApiGenreQueryOption from "@/query_options/movieApiGenreQueryOption.ts";
+import movieApiProviderQueryOption from "@/query_options/movieApiProviderQueryOption.ts";
+import movieApiLanguageQueryOption from "@/query_options/movieApiLanguageQueryOption.ts";
+import movieApiAgeRatingQueryOption from "@/query_options/movieApiAgeRatingQueryOption.ts";
 
 type MovieSearchProp = {
     searchTerm: string
@@ -78,10 +82,14 @@ const HomePage = () => {
         selectedAdultMode,
         pagination,
     ])
-    const { data, isPending, isError } = useQuery(movieApiSearchQueryOption(movieSearchProp))
+    const { data: movieData, isPending, isError } = useQuery(movieApiSearchQueryOption(movieSearchProp))
+    const { data: genreData } = useQuery(movieApiGenreQueryOption())
+    const { data: providerData } = useQuery(movieApiProviderQueryOption())
+    const { data: languageData } = useQuery(movieApiLanguageQueryOption())
+    const { data: ageRatingData } = useQuery(movieApiAgeRatingQueryOption())
 
-    const isValidDataLoaded: boolean = (data?.results.length || 0) > 0 ||
-        data?.results.length === 0 ||
+    const isValidDataLoaded: boolean = (movieData?.results.length || 0) > 0 ||
+        movieData?.results.length === 0 ||
         isError
 
     useEffect(() => {
@@ -112,7 +120,7 @@ const HomePage = () => {
     ])
 
     useEffect(() => {
-        document.title = "ScreenPath | Your calm path to the perfect movie"
+        document.title = "ScreenPath - Your calm path to the perfect movie"
     }, []);
 
     return (
@@ -191,7 +199,19 @@ const HomePage = () => {
                                     setTesseractOpen: setTesseractOpen
                                 }
                             }
-                            totalResults={data?.total_results || 0}
+                            totalResults={movieData?.total_results || 0}
+                            genreData={genreData || {
+                                genres: []
+                            }}
+                            providerData={providerData || {
+                                results: []
+                            }}
+                            languageData={languageData || []}
+                            ageRatingData={ageRatingData || {
+                                certifications: {
+                                    US: []
+                                }
+                            }}
                             searchSectionRef={searchSectionRef}
                         />
                         <Tesseract
@@ -205,7 +225,7 @@ const HomePage = () => {
                         <SearchResults
                             searchedMovieProps={
                                 {
-                                    movieResponse: data || {
+                                    movieResponse: movieData || {
                                         page: 0,
                                         results: [],
                                         total_pages: 0,
@@ -221,6 +241,7 @@ const HomePage = () => {
                                     setPagination: setPagination
                                 }
                             }
+                            languageData={languageData || []}
                             movieResultRef={movieResultRef}
                         />
                         <Footer />

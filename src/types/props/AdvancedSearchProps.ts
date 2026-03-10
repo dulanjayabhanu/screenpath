@@ -1,4 +1,8 @@
 import * as React from "react";
+import type {GenreResponse} from "@/types/GenreResponse.ts";
+import type {ProviderResponse} from "@/types/ProviderResponse.ts";
+import type {LanguageResponse} from "@/types/LanguageResponse.ts";
+import type {AgeRatingResponse} from "@/types/AgeRatingResponse.ts";
 
 export type AdvancedSearchProps = {
     searchTermHookProps: {
@@ -42,5 +46,9 @@ export type AdvancedSearchProps = {
         setTesseractOpen: React.Dispatch<React.SetStateAction<boolean>>
     }
     totalResults: number
+    genreData: GenreResponse
+    providerData: ProviderResponse
+    languageData: LanguageResponse
+    ageRatingData: AgeRatingResponse
     searchSectionRef:  React.RefObject<HTMLDivElement | null>
 }

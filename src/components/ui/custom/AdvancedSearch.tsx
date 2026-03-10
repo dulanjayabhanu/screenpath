@@ -3,12 +3,7 @@ import {Separator} from "@/components/ui/separator.tsx";
 import SearchFilterCard from "@/components/ui/custom/SearchFilterCard.tsx";
 import getMovieYears from "@/utils/getMovieYears.ts";
 import SearchBar from "@/components/ui/custom/SearchBar.tsx";
-import {useQuery} from "@tanstack/react-query";
-import movieApiGenreQueryOption from "@/query_options/movieApiGenreQueryOption.ts";
 import getSortByOptions from "@/utils/getSortByOptions.ts";
-import movieApiProviderQueryOption from "@/query_options/movieApiProviderQueryOption.ts";
-import movieApiLanguageQueryOption from "@/query_options/movieApiLanguageQueryOption.ts";
-import movieApiAgeRatingQueryOption from "@/query_options/movieApiAgeRatingQueryOption.ts";
 import type {AdvancedSearchProps} from "@/types/props/AdvancedSearchProps.ts";
 import type {SortBy} from "@/types/SortBy.ts";
 
@@ -25,13 +20,17 @@ const AdvancedSearch = (
         paginationHookProps,
         tesseractHookProps,
         totalResults,
+        genreData,
+        providerData,
+        languageData,
+        ageRatingData,
         searchSectionRef,
     }: AdvancedSearchProps) => {
 
-    const { data: genreData } = useQuery(movieApiGenreQueryOption())
-    const { data: providerData } = useQuery(movieApiProviderQueryOption())
-    const { data: languageData } = useQuery(movieApiLanguageQueryOption())
-    const { data: ageRatingData } = useQuery(movieApiAgeRatingQueryOption())
+    // const { data: genreData } = useQuery(movieApiGenreQueryOption())
+    // const { data: providerData } = useQuery(movieApiProviderQueryOption())
+    // const { data: languageData } = useQuery(movieApiLanguageQueryOption())
+    // const { data: ageRatingData } = useQuery(movieApiAgeRatingQueryOption())
 
     const movieYears: string[] = getMovieYears()
     const sortByOptions: SortBy[] = getSortByOptions()
