@@ -15,11 +15,11 @@ const CastCard = ( { castMember }: CastCardProps ) => {
         castMember?.gender === female ? "/default_female_banner.svg" : "/default_male_banner.svg"
 
     return (
-        <Card className="relative w-full max-w-50 pt-0">
+        <Card className="relative w-full max-w-50 pt-0 group">
             <img
                 src={posterUrl}
                 alt={castMember?.name || "N/A"}
-                className="relative z-20 aspect-square h-55 w-full object-cover brightness-60 hover:grayscale-0 hover:brightness-95 grayscale dark:brightness-40 dark:hover:brightness-90 rounded-t-lg"
+                className="relative z-20 aspect-square h-55 w-full object-cover brightness-60 group-hover:grayscale-0 group-hover:brightness-95 grayscale dark:brightness-40 dark:group-hover:brightness-90 transition-all duration-300 rounded-t-lg"
             />
             <CardHeader>
                 <CardTitle className="flex flex-row items-center gap-1">

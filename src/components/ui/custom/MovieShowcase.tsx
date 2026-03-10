@@ -40,7 +40,8 @@ const MovieShowcase = (
                     <img
                         src={posterUrl}
                         alt={`${title || "N/A"} movie poster`}
-                        className="rounded-lg object-cover h-full brightness-60 hover:grayscale-0 hover:brightness-95 grayscale dark:brightness-40 dark:hover:brightness-90"
+                        loading="lazy"
+                        className="rounded-lg object-cover h-full brightness-60 hover:grayscale-0 hover:brightness-95 grayscale dark:brightness-40 dark:hover:brightness-90 transition-all duration-300"
                     />
                 </AspectRatio>
             </div>

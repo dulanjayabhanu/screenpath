@@ -10,7 +10,7 @@ import BackToTopFab from "@/components/ui/custom/BackToTopFab.tsx";
 
 const PrivacyPage = () => {
     useEffect(() => {
-        document.title = "Privacy Policy | ScreenPath"
+        document.title = "Privacy Policy - ScreenPath"
     }, [])
 
     return (

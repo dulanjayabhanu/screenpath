@@ -161,21 +161,25 @@
     @apply scroll-m-20 sm:text-2xl font-semibold tracking-tight text-gray-600 dark:text-gray-300 text-center capitalize;
   }
 
+  a {
+    @apply cursor-default
+  }
+
   ::selection {
-    background: black;
-    color: white;
+    background: #0a0a0a;
+    color: #fafafa;
   }
   ::-moz-selection {
-    background: black;
-    color: white;
+    background: #0a0a0a;
+    color: #fafafa;
   }
   .dark ::selection {
-    background: white;
-    color: black;
+    background: #fafafa;
+    color: #0a0a0a;
   }
   .dark ::-moz-selection {
-    background: white;
-    color: black;
+    background: #fafafa;
+    color: #0a0a0a;
   }
 }
 
@@ -184,8 +188,8 @@
     background-image: linear-gradient(to right, hsl(var(--grid-color) / var(--grid-opacity)) 1px, transparent 1px),
             linear-gradient(to bottom, hsl(var(--grid-color) / var(--grid-opacity)) 1px, transparent 1px);
     background-size: 20px 30px;
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%);
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 0%, #000 60%, transparent 100%);
+    mask-image: radial-gradient(ellipse 70% 50% at 50% 0%, #000 60%, transparent 100%);
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
   }

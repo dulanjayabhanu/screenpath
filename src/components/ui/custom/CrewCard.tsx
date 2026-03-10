@@ -15,11 +15,12 @@ const CrewCard = ( { crewMember }: CrewCardProps ) => {
         crewMember.gender === female ? "/default_female_banner.svg" : "/default_male_banner.svg"
 
     return (
-        <Card className="relative w-full max-w-50 pt-0">
+        <Card className="relative w-full max-w-50 pt-0 group">
             <img
                 src={posterUrl || "/test_banner.webp"}
                 alt={crewMember.name || "N/A"}
-                className="relative z-20 aspect-square h-60 w-full object-cover brightness-60 hover:grayscale-0 hover:brightness-95 grayscale dark:brightness-40 dark:hover:brightness-90 rounded-t-lg"
+                loading="lazy"
+                className="relative z-20 aspect-square h-50 w-full object-cover brightness-60 group-hover:grayscale-0 group-hover:brightness-95 grayscale dark:brightness-40 dark:group-hover:brightness-90 transition-all duration-300 rounded-t-lg"
             />
             <CardHeader>
                 <CardTitle className="flex flex-row">

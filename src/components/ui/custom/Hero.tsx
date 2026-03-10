@@ -6,10 +6,10 @@ import type {HeroProps} from "@/types/props/HeroProps.ts";
 const Hero = ({ searchSectionRef }:  HeroProps) => {
     return (
         <section className="flex flex-col gap-2 items-center justify-center pt-12 pb-10 sm:pt-10 sm:pb-20">
-            <h1 className="scroll-m-20 text-center text-6xl font-extrabold tracking-tight text-balance sm:text-[min(10vw,95px)]">
+            <h1 className="scroll-m-20 text-center text-6xl font-extrabold tracking-tight text-balance sm:text-[min(10vw,105px)]">
                 ScreenPath
             </h1>
-            <h3 className="pt-4">
+            <h3 className="scroll-m-20 text-lg sm:text-2xl font-medium tracking-tight">
                 Your calm path to the perfect movie
             </h3>
             <div className="pt-12 sm:pt-16">

@@ -2,7 +2,11 @@ import RecommendationCard from "@/components/ui/custom/RecommendationCard.tsx";
 import type {RecommendationProps} from "@/types/props/RecommendationProps.ts";
 import MovieSearchEmpty from "@/components/ui/custom/MovieSearchEmpty.tsx";
 
-const Recommendations = ( { recommendations }: RecommendationProps ) => {
+const Recommendations = (
+    {
+        recommendations,
+        languageData,
+    }: RecommendationProps ) => {
     return (
         <section className="flex flex-col gap-4 py-10">
             <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">Recommendations</h4>
@@ -12,11 +16,23 @@ const Recommendations = ( { recommendations }: RecommendationProps ) => {
                 </div>
             ): (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 py-5 sm:py-8">
-                    {recommendations?.results.slice(0, 4).map(movie => (
-                        <RecommendationCard
-                            key={movie.id}
-                            movie={movie}
-                        />))}
+                    {recommendations?.results.slice(0, 4).map(movie => {
+                        const foundedLanguage = languageData.find((language) =>
+                            language.iso_639_1 === movie.original_language
+                        )
+
+                        return (
+                            <RecommendationCard
+                                key={movie.id}
+                                movie={movie}
+                                language={foundedLanguage || {
+                                    iso_639_1: "",
+                                    english_name: "",
+                                    name: "",
+                                }}
+                            />
+                        )
+                    })}
                 </div>
             )}
         </section>

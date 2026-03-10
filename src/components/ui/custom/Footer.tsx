@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <section className="w-full flex flex-col gap-4 items-center justify-center py-10">
             <div className="flex flex-row items-center gap-2">
-                <img src="/favicon.svg" alt="ScreenPath logo" className="h-8 w-auto invert-0 dark:invert-100"/>
+                <img src="/screenpath-logo.svg" alt="ScreenPath logo" loading="lazy" className="h-8 w-auto invert-0 dark:invert-100"/>
                 <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
                     ScreenPath
                 </h4>
