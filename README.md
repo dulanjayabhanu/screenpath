@@ -193,19 +193,19 @@ ScreenPath is built using modern frontend technologies.
 
 The application follows a modular component-based structure.
 
-| Directory       |Description                                                                                                              |
-|-----------------|:------------------------------------------------------------------------------------------------------------------------|
-|`src/`           |                                                                                                                         |
-|`components/`    |Reusable UI components used across the application.                                                                      |
-|`pages/`         |Route-level page components responsible for rendering complete views.                                                    |
-|`layout/`        |Layout-level components responsible for global UI behaviors. <br>Includes the root layout that manages shared logic such as scroll position reset and nested routing via React Router's <Outlet>.|
-|`hooks/`         |Custom React hooks that encapsulate reusable logic.                                                                      |
-|`services/`      |Modules responsible for interacting with external APIs and handling network requests.                                    |
-|`query-options/` |Centralized definitions for TanStack Query configuration including query keys, query functions, and query option objects.|
-|`constants/`     |Default values and configuration constants used throughout the application.                                              |
-|`types/`         |Type definitions used across the application to ensure consistent data structures and improve maintainability.           |
-|`utils/`         |Utility functions and helper modules used in multiple parts of the application.                                          |
-|`assets/`        |Static assets such as images, icons, and logos.                                                                          |
+| Directory       | Description                                                                                                                                                                                       |
+|-----------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`src/`           | Contains the main application source code.                                                                                                                                                        |
+|`components/`    | Reusable UI components used across the application.                                                                                                                                               |
+|`pages/`         | Route-level page components responsible for rendering complete views.                                                                                                                             |
+|`layout/`        | Layout-level components responsible for global UI behaviors. <br>Includes the root layout that manages shared logic such as scroll position reset and nested routing via React Router's <Outlet>. |
+|`hooks/`         | Custom React hooks that encapsulate reusable logic.                                                                                                                                               |
+|`services/`      | Modules responsible for interacting with external APIs and handling network requests.                                                                                                             |
+|`query-options/` | Centralized definitions for TanStack Query configuration including query keys, query functions, and query option objects.                                                                         |
+|`constants/`     | Default values and configuration constants used throughout the application.                                                                                                                       |
+|`types/`         | Type definitions used across the application to ensure consistent data structures and improve maintainability.                                                                                    |
+|`utils/`         | Utility functions and helper modules used in multiple parts of the application.                                                                                                                   |
+|`assets/`        | Static assets such as images, icons, and logos.                                                                                                                                                   |
 
 This structure separates responsibilities and improves maintainability.
 
