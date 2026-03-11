@@ -31,12 +31,12 @@ const Tesseract = ( { tesseractHookProps }: TesseractProps ) => {
             autoFocus={true}
         >
             <DrawerContent>
-                <div className="mx-auto w-full max-w-sm flex flex-col gap-2">
+                <div className="mx-auto w-full max-w-sm flex flex-col">
                     <DrawerHeader>
                         <DrawerTitle>A Call From the Future</DrawerTitle>
                         <DrawerDescription>A short conversation between your future self and the developer.</DrawerDescription>
                     </DrawerHeader>
-                    <div className="flex flex-col gap-6 border rounded-xl p-6">
+                    <div className="flex flex-col gap-3 border rounded-xl p-3">
                         <div className="flex flex-row-reverse gap-2">
                             <div className="relative h-fit inline-flex">
                                 <Avatar>

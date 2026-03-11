@@ -45,7 +45,7 @@ const MovieCard = (
                         </CardAction>
                     ) : parseInt(movie.release_date.split("-")[0]) > new Date().getFullYear() ? (
                         <CardAction>
-                            <Badge variant="secondary">Upcoming</Badge>
+                            <Badge variant="default">Upcoming</Badge>
                         </CardAction>
                     ) : null
                 }
