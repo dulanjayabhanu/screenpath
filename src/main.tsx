@@ -11,6 +11,8 @@ import TermsPage from "@/pages/TermsPage.tsx";
 import FileNotFoundPage from "@/pages/404Page.tsx";
 import {Analytics} from "@vercel/analytics/react";
 import {SpeedInsights} from "@vercel/speed-insights/react";
+import ActorsPage from "@/pages/ActorsPage.tsx";
+import ActorDetailsPage from "@/pages/ActorDetailsPage.tsx";
 
 const queryClient = new QueryClient()
 
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
             {
                 path: "/terms",
                 element: <TermsPage />
+            },
+            {
+                path: "/actors",
+                element: <ActorsPage />
+            },
+            {
+                path: "/actor/:actorId",
+                element: <ActorDetailsPage />
             }
         ]
     }

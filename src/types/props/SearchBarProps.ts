@@ -4,4 +4,5 @@ export type SearchBarProps = {
     searchTerm: string
     setSearchTerm: React.Dispatch<React.SetStateAction<string>>
     totalResults: number
+    placeholder: string
 }

@@ -33,7 +33,7 @@ const SearchFilterCard = (
 
     const sortedLanguages: Language[] = languageSort(languages, "ASC")
 
-    const resetFilters = () => { // <=
+    const resetFilters = () => {
         const defaultValues = searchFilterDefaultValues()
 
         searchTermHookProps.setSearchTerm(defaultValues.searchTerm)

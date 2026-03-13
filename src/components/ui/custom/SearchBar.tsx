@@ -8,12 +8,13 @@ const SearchBar = (
         searchTerm,
         setSearchTerm,
         totalResults,
+        placeholder,
     }: SearchBarProps) => {
     const formattedTotalResults = formatNumbers(totalResults)
 
     return (
         <InputGroup>
-            <InputGroupInput placeholder="Search by movie title…" value={searchTerm} onChange={(e) => {
+            <InputGroupInput placeholder={placeholder} value={searchTerm} onChange={(e) => {
                 setSearchTerm(e.target.value)
             }}/>
             <InputGroupAddon>
