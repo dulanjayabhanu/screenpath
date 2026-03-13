@@ -22,8 +22,8 @@ const CastCard = ( { castMember }: CastCardProps ) => {
                 className="relative z-20 aspect-square h-55 w-full object-cover brightness-60 group-hover:grayscale-0 group-hover:brightness-95 grayscale dark:brightness-40 dark:group-hover:brightness-90 transition-all duration-300 rounded-t-lg"
             />
             <CardHeader>
-                <CardTitle className="flex flex-row items-center gap-1">
-                    <span className="w-full max-w-35 truncate">{castMember?.name || "N/A"}</span>
+                <CardTitle className="flex flex-row justify-start items-center gap-1 overflow-x-hidden">
+                    <span className="w-auto max-w-30 truncate">{castMember?.name || "N/A"}</span>
                     <span className="text-muted-foreground text-sm">as</span>
                 </CardTitle>
                 <CardDescription>

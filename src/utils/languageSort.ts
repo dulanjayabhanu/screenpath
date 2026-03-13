@@ -1,10 +1,6 @@
-type SortingType = "ASC" | "DESC"
+import type {Language} from "@/types/Language.ts";
 
-type Language = {
-    iso_639_1: string
-    english_name: string
-    name: string
-}
+type SortingType = "ASC" | "DESC"
 
 const languageSort = (data: Language[], sortingType: SortingType): Language[] => {
 
