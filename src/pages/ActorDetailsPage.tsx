@@ -6,10 +6,8 @@ import BackToTopFab from "@/components/ui/custom/BackToTopFab.tsx";
 import SubPageHero from "@/components/ui/custom/SubPageHero.tsx";
 import Footer from "@/components/ui/custom/Footer.tsx";
 import {ThemeProvider} from "@/components/theme-provider.tsx";
-import {useParams} from "react-router";
 
 const ActorDetailsPage = () => {
-    const { actorId } = useParams()
 
     return (
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
