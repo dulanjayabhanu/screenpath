@@ -27,11 +27,6 @@ const AdvancedSearch = (
         searchSectionRef,
     }: AdvancedSearchProps) => {
 
-    // const { data: genreData } = useQuery(movieApiGenreQueryOption())
-    // const { data: providerData } = useQuery(movieApiProviderQueryOption())
-    // const { data: languageData } = useQuery(movieApiLanguageQueryOption())
-    // const { data: ageRatingData } = useQuery(movieApiAgeRatingQueryOption())
-
     const movieYears: string[] = getMovieYears()
     const sortByOptions: SortBy[] = getSortByOptions()
 
@@ -59,6 +54,7 @@ const AdvancedSearch = (
                     searchTerm={searchTermHookProps.searchTerm}
                     setSearchTerm={searchTermHookProps.setSearchTerm}
                     totalResults={totalResults}
+                    placeholder={"Search by movie title…"}
                 />
                 <SearchFilterCard
                     movieYears={movieYears}
