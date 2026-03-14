@@ -51,7 +51,9 @@ const ActorsPage = () => {
         }
     }, [
         actorSearchProps,
-        isValidDataLoad
+        isValidDataLoad,
+        selectedGender,
+        selectedSortBy,
     ])
 
     useEffect(() => {
