@@ -24,7 +24,7 @@ const ActorCard = ( { actor }: ActorCardProps ) => {
             <img
                 src={posterUrl}
                 alt={actor?.name || "N/A"}
-                className="relative z-20 aspect-square h-80 w-full object-cover brightness-60 group-hover:grayscale-0 group-hover:brightness-95 grayscale dark:brightness-40 dark:group-hover:brightness-90 transition-all duration-300 rounded-t-lg"
+                className="relative z-20 aspect-square h-75 w-full object-cover brightness-60 group-hover:grayscale-0 group-hover:brightness-95 grayscale dark:brightness-40 dark:group-hover:brightness-90 transition-all duration-300 rounded-t-lg"
             />
             <CardHeader>
                 <CardTitle className="flex flex-row justify-start items-baseline gap-1 overflow-x-hidden">
