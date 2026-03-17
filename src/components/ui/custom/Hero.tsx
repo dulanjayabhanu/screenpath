@@ -16,7 +16,7 @@ const Hero = ({ searchSectionRef }:  HeroProps) => {
                 <Features/>
             </div>
             <div className="pt-12 sm:pt-16">
-                <Badge>
+                <Badge className="animate-bounce">
                     <a className="flex gap-1 items-center" onClick={() =>
                         searchSectionRef.current?.scrollIntoView(
                             {

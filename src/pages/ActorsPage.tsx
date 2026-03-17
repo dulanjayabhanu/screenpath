@@ -17,6 +17,7 @@ import {useQuery} from "@tanstack/react-query";
 import usePagination from "@/hooks/usePagination.ts";
 import {useEffect, useMemo, useRef} from "react";
 import type {ActorSearchProps} from "@/types/ActorSearchProps.ts";
+import BreadCrumb from "@/components/ui/custom/BreadCrumb.tsx";
 
 const ActorsPage = () => {
     const { searchTerm, setSearchTerm } = useSearchTerm()
@@ -81,6 +82,11 @@ const ActorsPage = () => {
                     <BackToTopFab />
 
                     <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+                        <BreadCrumb endpoints={[
+                            {
+                                name: "The Actors",
+                            }
+                        ]}/>
                         <SubPageHero />
                         <ActorSearch
                             searchTermProps={

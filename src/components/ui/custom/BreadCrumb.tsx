@@ -6,9 +6,10 @@ import {
     BreadcrumbSeparator
 } from "@/components/ui/breadcrumb.tsx";
 import {useNavigate} from "react-router";
+import React from 'react';
 import type {BreadCrumbProps} from "@/types/props/BreadCrumbProps.ts";
 
-const BreadCrumb = ( { movieName }: BreadCrumbProps ) => {
+const BreadCrumb = ( { endpoints }: BreadCrumbProps ) => {
     const navigate = useNavigate()
 
     return (
@@ -16,12 +17,24 @@ const BreadCrumb = ( { movieName }: BreadCrumbProps ) => {
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem>
-                        <BreadcrumbLink onClick={() => navigate("/")}>Home</BreadcrumbLink>
+                        <BreadcrumbLink onClick={() => navigate("/")}>
+                            Home
+                        </BreadcrumbLink>
                     </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                        <BreadcrumbPage>{movieName}</BreadcrumbPage>
-                    </BreadcrumbItem>
+                    {endpoints.map((endpoint, index) => (
+                        <React.Fragment key={index}>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                {endpoint.path ? (
+                                    <BreadcrumbLink onClick={() => navigate(endpoint.path || "/")}>
+                                        {endpoint.name}
+                                    </BreadcrumbLink>
+                                ) : (
+                                    <BreadcrumbPage>{endpoint.name}</BreadcrumbPage>
+                                )}
+                            </BreadcrumbItem>
+                        </React.Fragment>
+                    ))}
                 </BreadcrumbList>
             </Breadcrumb>
         </section>
