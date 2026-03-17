@@ -1,3 +1,5 @@
+import type {BreadCrumbEndPoint} from "@/types/BreadCrumbEndPoint.ts";
+
 export type BreadCrumbProps = {
-    movieName: string
+    endpoints: BreadCrumbEndPoint[]
 }
