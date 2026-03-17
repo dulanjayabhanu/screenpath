@@ -48,7 +48,11 @@ const MoviesPage = () => {
     const renderMovieContent = () => {
         return (
             <>
-                <BreadCrumb movieName={data?.title || "N/A"}/>
+                <BreadCrumb endpoints={[
+                    {
+                        name: data?.title || "N/A",
+                    }
+                ]}/>
                 <MovieShowcase
                     backdrop_path={data?.backdrop_path || null}
                     title={data?.title || ""}

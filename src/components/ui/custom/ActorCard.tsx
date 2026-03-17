@@ -27,11 +27,11 @@ const ActorCard = ( { actor }: ActorCardProps ) => {
                 className="relative z-20 aspect-square h-75 w-full object-cover brightness-60 group-hover:grayscale-0 group-hover:brightness-95 grayscale dark:brightness-40 dark:group-hover:brightness-90 transition-all duration-300 rounded-t-lg"
             />
             <CardHeader>
-                <CardTitle className="flex flex-row justify-start items-baseline gap-1 overflow-x-hidden">
+                <CardTitle className="flex flex-row justify-start items-baseline gap-2 overflow-x-hidden">
                     <span className="w-auto max-w-60 truncate">{actor?.name || "N/A"}</span>
-                    <span className="max-w-30 truncate text-muted-foreground text-sm">known for</span>
+                    <span className="max-w-30 truncate text-muted-foreground text-xs">starring</span>
                 </CardTitle>
-                <CardDescription className="overflow-x-hidden">
+                <CardDescription className="overflow-x-hidden pt-1">
                     <p className="leading-7 text-muted-foreground text-justify w-full max-w-60 truncate">{actor?.known_for?.sort((a, b) =>
                         b.vote_count - a.vote_count
                     ).slice(
@@ -43,7 +43,7 @@ const ActorCard = ( { actor }: ActorCardProps ) => {
                                 actorMovie.name : 
                                 ""}`
                     )) || "N/A"}</p>
-                    <div className="flex justify-end mt-2">
+                    <div className="flex justify-end mt-3">
                         <Badge variant="secondary" className="flex gap-2">
                             <Star />
                             <p>{actor?.popularity.toFixed(1)}</p>
