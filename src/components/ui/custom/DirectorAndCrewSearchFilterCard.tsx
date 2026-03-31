@@ -4,28 +4,32 @@ import {Field, FieldLabel,} from "@/components/ui/field.tsx";
 import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip.tsx";
-import type {ActorSearchFilterCardProps} from "@/types/props/ActorSearchFilterCardProps.ts";
 import getGenderOptions from "@/utils/getGenderOptions.ts";
 import type {Gender} from "@/types/Gender.ts";
 import getActorSortByOptions from "@/utils/getActorSortByOptions.ts";
 import type {SortBy} from "@/types/SortBy.ts";
-import actorSearchFilterDefaultValues from "@/constants/actorSearchFilterDefaultValues.ts";
+import getDepartmentOptions from "@/utils/getDepartmentOptions.ts";
+import type {DirectorAndCrewSearchFilterCardProps} from "@/types/props/DirectorAndCrewSearchFilterCardProps.ts";
+import directorAndCrewSearchFilterDefaultValues from "@/constants/directorAndCrewSearchFilterDefaultValues.ts";
 
-const ActorSearchFilterCard = (
+const DirectorAndCrewSearchFilterCard = (
     {
         searchTermHookProps,
         genderHookProps,
         sortByHookProps,
-    }: ActorSearchFilterCardProps ) => {
+        departmentHookProps,
+    }: DirectorAndCrewSearchFilterCardProps ) => {
     const genderOptions: Gender[] = getGenderOptions()
     const actorSortByOptions: SortBy[] = getActorSortByOptions()
+    const departmentOptions: string[] = getDepartmentOptions()
 
     const resetFilters = (): void => {
-        const { searchTerm, gender, sortBy } = actorSearchFilterDefaultValues()
+        const { searchTerm, gender, sortBy, department } = directorAndCrewSearchFilterDefaultValues()
 
         searchTermHookProps.setSearchTerm(searchTerm)
         genderHookProps.setSelectedGender(gender)
         sortByHookProps.setSelectedSortBy(sortBy)
+        departmentHookProps.setSelectedDepartment(department)
     }
 
     return (
@@ -54,7 +58,31 @@ const ActorSearchFilterCard = (
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <Field>
+                        <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
+                            Department
+                        </FieldLabel>
+                        <Select value={departmentHookProps.selectedDepartment} onValueChange={(v) =>
+                            departmentHookProps.setSelectedDepartment(v)
+                        }>
+                            <SelectTrigger id="checkout-7j9-exp-year-f59">
+                                <SelectValue placeholder={departmentOptions[0]} />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    {departmentOptions.map((department) => (
+                                        <SelectItem
+                                            key={department}
+                                            value={department}
+                                        >
+                                            {department}
+                                        </SelectItem>
+                                    ))}
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
+                    </Field>
                     <Field>
                         <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
                             Gender
@@ -79,7 +107,7 @@ const ActorSearchFilterCard = (
                             </SelectContent>
                         </Select>
                     </Field>
-                    <Field>
+                    <Field className="sm:col-span-2 lg:col-span-1">
                         <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
                             Sort By
                         </FieldLabel>
@@ -107,4 +135,4 @@ const ActorSearchFilterCard = (
     )
 }
 
-export default ActorSearchFilterCard
+export default DirectorAndCrewSearchFilterCard

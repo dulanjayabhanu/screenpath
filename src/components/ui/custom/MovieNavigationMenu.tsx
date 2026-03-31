@@ -16,6 +16,11 @@ const MovieNavigationMenu = () => {
                         <Link to="/actors">Actors</Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} bg-transparent font-normal text-muted-foreground hover:bg-transparent`}>
+                        <Link to="/crews">Directors & Crew</Link>
+                    </NavigationMenuLink>
+                </NavigationMenuItem>
             </NavigationMenuList>
         </NavigationMenu>
     )

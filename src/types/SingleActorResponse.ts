@@ -1,5 +1,5 @@
-import type {Crew} from "@/types/Crew.ts";
 import type {ActorMovie} from "@/types/ActorMovie.ts";
+import type {CrewMovie} from "@/types/CrewMovie.ts";
 
 export type SingleActorResponse = {
     adult: boolean
@@ -14,7 +14,7 @@ export type SingleActorResponse = {
     known_for_department: string
     movie_credits: {
         cast: ActorMovie[]
-        crew: Crew[]
+        crew: CrewMovie[]
     }
     name: string
     place_of_birth: string

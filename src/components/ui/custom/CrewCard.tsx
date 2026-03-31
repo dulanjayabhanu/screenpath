@@ -4,6 +4,7 @@ import {ChartSpline} from "lucide-react";
 import type {CrewCardProps} from "@/types/props/CrewCardProps.ts";
 import type {GenderDefaultValues} from "@/types/GenderDefaultValues.ts";
 import genderDefaultValues from "@/constants/genderDefaultValues.ts";
+import {useNavigate} from "react-router";
 
 const CrewCard = ( { crewMember }: CrewCardProps ) => {
     const { female }: GenderDefaultValues = genderDefaultValues()
@@ -14,8 +15,12 @@ const CrewCard = ( { crewMember }: CrewCardProps ) => {
         `${MOVIE_API_BASE_POSTER_URL}${MOVIE_API_POSTER_W1280}${crewMember.profile_path}` :
         crewMember.gender === female ? "/default_female_banner.svg" : "/default_male_banner.svg"
 
+    const navigate = useNavigate()
+
     return (
-        <Card className="relative w-full max-w-50 pt-0 group">
+        <Card className="relative w-full max-w-50 pt-0 group" onClick={() =>
+            navigate(`/crew/${crewMember.id}`)
+        }>
             <img
                 src={posterUrl || "/test_banner.webp"}
                 alt={crewMember.name || "N/A"}
