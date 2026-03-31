@@ -6,25 +6,27 @@ import BackToTopFab from "@/components/ui/custom/BackToTopFab.tsx";
 import Footer from "@/components/ui/custom/Footer.tsx";
 import {ThemeProvider} from "@/components/theme-provider.tsx";
 import SubPageHero from "@/components/ui/custom/SubPageHero.tsx";
-import ActorSearch from "@/components/ui/custom/ActorSearch.tsx";
-import ActorSearchResults from "@/components/ui/custom/ActorSearchResults.tsx";
 import useSearchTerm from "@/hooks/useSearchTerm.ts";
 import useSelectedGender from "@/hooks/useSelectedGender.ts";
 import useSelectedActorSortBy from "@/hooks/useSelectedActorSortBy.ts";
 import {useDebounce} from "use-debounce";
-import movieApiActorSearchQueryOption from "@/query_options/movieApiActorSearchQueryOption.ts";
 import {useQuery} from "@tanstack/react-query";
 import usePagination from "@/hooks/usePagination.ts";
 import {useEffect, useMemo, useRef} from "react";
 import type {ActorSearchProps} from "@/types/ActorSearchProps.ts";
 import BreadCrumb from "@/components/ui/custom/BreadCrumb.tsx";
+import DirectorAndCrewSearch from "@/components/ui/custom/DirectorAndCrewSearch.tsx";
+import useSelectedDepartment from "@/hooks/useSelectedDepartment.ts";
+import DirectorAndCrewSearchResults from "@/components/ui/custom/DirectorAndCrewSearchResults.tsx";
+import movieApiDirectorAndCrewSearchQueryOption from "@/query_options/movieApiDirectorAndCrewSearchQueryOption.ts";
 import {ContextMenu, ContextMenuTrigger} from "@/components/ui/context-menu.tsx";
 import MainContextMenu from "@/components/ui/custom/MainContextMenu.tsx";
 
-const ActorsPage = () => {
+const DirectorsAndCrewSearch = () => {
     const { searchTerm, setSearchTerm } = useSearchTerm()
     const { selectedGender, setSelectedGender } = useSelectedGender()
     const { selectedSortBy, setSelectedSortBy } = useSelectedActorSortBy()
+    const { selectedDepartment, setSelectedDepartment } = useSelectedDepartment()
     const { pagination, setPagination } = usePagination()
 
     const searchResultRef = useRef<HTMLDivElement | null>(null)
@@ -40,7 +42,7 @@ const ActorsPage = () => {
         debounceSearchTerm,
         pagination
     ])
-    const { data, isPending, isError } = useQuery(movieApiActorSearchQueryOption(actorSearchProps))
+    const { data, isPending, isError } = useQuery(movieApiDirectorAndCrewSearchQueryOption(actorSearchProps))
 
     const isValidDataLoad: boolean = (data?.results?.length || 0) > 0 || isError
     useEffect(() => {
@@ -57,6 +59,7 @@ const ActorsPage = () => {
         isValidDataLoad,
         selectedGender,
         selectedSortBy,
+        selectedDepartment,
     ])
 
     useEffect(() => {
@@ -65,10 +68,11 @@ const ActorsPage = () => {
         debounceSearchTerm,
         selectedGender,
         selectedSortBy,
+        selectedDepartment,
     ])
 
     useEffect(() => {
-        document.title = "The Actors - ScreenPath"
+        document.title = "The Directors & Crew - ScreenPath"
     }, [])
 
     return (
@@ -80,7 +84,7 @@ const ActorsPage = () => {
                     <ContextMenuTrigger>
 
                         <MainContextMenu
-                            reloadPath={"/actors"}
+                            reloadPath={"/crews"}
                         />
 
                         <div className="min-h-screen relative">
@@ -93,14 +97,14 @@ const ActorsPage = () => {
                             <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 overflow-x-hidden">
                                 <BreadCrumb endpoints={[
                                     {
-                                        name: "The Actors",
+                                        name: "The Directors & Crew",
                                     }
                                 ]}/>
                                 <SubPageHero
-                                    title={"The Actors"}
-                                    tagline={"Explore the actors behind your favorite movies"}
+                                    title={"The Directors & Crew"}
+                                    tagline={"Explore the Directors and Crew"}
                                 />
-                                <ActorSearch
+                                <DirectorAndCrewSearch
                                     searchTermProps={
                                         {
                                             searchTerm: searchTerm,
@@ -119,9 +123,15 @@ const ActorsPage = () => {
                                             setSelectedSortBy: setSelectedSortBy
                                         }
                                     }
+                                    departmentHookProps={
+                                        {
+                                            selectedDepartment: selectedDepartment,
+                                            setSelectedDepartment: setSelectedDepartment
+                                        }
+                                    }
                                     totalResults={data?.total_results || 0}
                                 />
-                                <ActorSearchResults
+                                <DirectorAndCrewSearchResults
                                     data={data || {
                                         page: 0,
                                         results: [],
@@ -148,7 +158,14 @@ const ActorsPage = () => {
                                             setSelectedSortBy: setSelectedSortBy
                                         }
                                     }
+                                    departmentHookProps={
+                                        {
+                                            selectedDepartment: selectedDepartment,
+                                            setSelectedDepartment: setSelectedDepartment
+                                        }
+                                    }
                                     searchResultRef={searchResultRef}
+                                    searchTerm={debounceSearchTerm}
                                 />
                                 <Footer />
                             </div>
@@ -163,4 +180,4 @@ const ActorsPage = () => {
     )
 }
 
-export default ActorsPage
+export default DirectorsAndCrewSearch

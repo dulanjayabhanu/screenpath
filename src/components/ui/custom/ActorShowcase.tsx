@@ -53,10 +53,10 @@ const ActorShowcase = (
                     />
                     {deathDay ? (
                         <img
-                            src="/flower.webp"
-                            alt="Flower image"
+                            src="/statue.webp"
+                            alt="Sad angle image"
                             loading="lazy"
-                            className="absolute object-contain aspect-video h-90 bottom-0 brightness-90 dark:brightness-80 inset-x-0 translate-y-15 transition-all group-hover:duration-500 group-hover:ease-out group-hover:translate-y-100" />
+                            className="absolute object-contain aspect-video h-155 inset-0 m-auto brightness-80 dark:brightness-80 translate-y-60 transition-all group-hover:duration-500 group-hover:ease-linear group-hover:translate-y-200" />
                     ) : null}
                 </AspectRatio>
             </div>

@@ -219,4 +219,7 @@
             transparent 100%
     );
   }
+  .fallback-wrapper{
+    @apply flex h-dvh bg-primary justify-center items-center col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4 py-15;
+  }
 }

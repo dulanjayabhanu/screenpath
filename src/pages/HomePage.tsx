@@ -16,7 +16,7 @@ import useSelectedLanguage from "@/hooks/useSelectedLanguage.ts";
 import useSelectedAgeRating from "@/hooks/useSelectedAgeRating.ts";
 import useSearchTerm from "@/hooks/useSearchTerm.ts";
 import {useDebounce} from "use-debounce";
-import {useEffect, useMemo, useRef} from "react";
+import {useEffect, useMemo, useRef, useState} from "react";
 import movieApiSearchQueryOption from "@/query_options/movieApiSearchQueryOption.ts";
 import {useQuery} from "@tanstack/react-query";
 import usePagination from "@/hooks/usePagination.ts";
@@ -29,6 +29,9 @@ import movieApiGenreQueryOption from "@/query_options/movieApiGenreQueryOption.t
 import movieApiProviderQueryOption from "@/query_options/movieApiProviderQueryOption.ts";
 import movieApiLanguageQueryOption from "@/query_options/movieApiLanguageQueryOption.ts";
 import movieApiAgeRatingQueryOption from "@/query_options/movieApiAgeRatingQueryOption.ts";
+import MainContextMenu from "@/components/ui/custom/MainContextMenu.tsx";
+import {ContextMenu, ContextMenuTrigger} from "@/components/ui/context-menu.tsx";
+import FeatureGuideCard from "@/components/ui/custom/FeatureGuideCard.tsx";
 
 type MovieSearchProp = {
     searchTerm: string
@@ -123,130 +126,154 @@ const HomePage = () => {
         document.title = "ScreenPath - Your calm path to the perfect movie"
     }, []);
 
+    const FEATURE_CARD_VISIBLE_STATUS: string = import.meta.env.VITE_FEATURE_CARD_VISIBLE_STATUS
+    const [ featureCardVisibleStatus, setFeatureCardVisibleStatus ] = useState<boolean>(() => {
+        const visibleStatus = localStorage.getItem(FEATURE_CARD_VISIBLE_STATUS)
+        return visibleStatus !== "true"
+    })
+
     return (
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
 
             <TooltipProvider>
 
-                <div className="min-h-screen relative">
-                    <GridPatternTop/>
-                    <GridPatternBottom/>
+                <ContextMenu>
+                    <ContextMenuTrigger>
+                        <MainContextMenu
+                            reloadPath={"/"}
+                        />
 
-                    <NavBar />
-                    <BackToTopFab />
+                        <div className="min-h-screen relative">
+                            <GridPatternTop/>
+                            <GridPatternBottom/>
 
-                    <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 overflow-x-hidden">
-                        <Hero searchSectionRef={searchSectionRef}/>
-                        <Separator />
-                        <AdvancedSearch
-                            searchTermHookProps={
-                                {
-                                    searchTerm: searchTerm,
-                                    setSearchTerm: setSearchTerm
-                                }
-                            }
-                            yearHookProps={
-                                {
-                                    selectedYear: selectedYear,
-                                    setSelectedYear: setSelectedYear
-                                }
-                            }
-                            genreHookProps={
-                                {
-                                    selectedGenre: selectedGenre,
-                                    setSelectedGenre: setSelectedGenre
-                                }
-                            }
-                            sortByHookProps={
-                                {
-                                    selectedSortBy: selectedSortBy,
-                                    setSelectedSortBy: setSelectedSortBy
-                                }
-                            }
-                            providerHookProps={
-                                {
-                                    selectedProvider: selectedProvider,
-                                    setSelectedProvider: setSelectedProvider
-                                }
-                            }
-                            languageHookProps={
-                                {
-                                    selectedLanguage: selectedLanguage,
-                                    setSelectedLanguage: setSelectedLanguage
-                                }
-                            }
-                            ageRatingHookProps={
-                                {
-                                    selectedAgeRating: selectedAgeRating,
-                                    setSelectedAgeRating: setSelectedAgeRating
-                                }
-                            }
-                            adultModeHookProps={
-                                {
-                                    selectedAdultMode: selectedAdultMode,
-                                    setSelectedAdultMode: setSelectedAdultMode
-                                }
-                            }
-                            paginationHookProps={
-                                {
-                                    pagination: pagination,
-                                    setPagination: setPagination
-                                }
-                            }
-                            tesseractHookProps={
-                                {
-                                    tesseractOpen: tesseractOpen,
-                                    setTesseractOpen: setTesseractOpen
-                                }
-                            }
-                            totalResults={movieData?.total_results || 0}
-                            genreData={genreData || {
-                                genres: []
-                            }}
-                            providerData={providerData || {
-                                results: []
-                            }}
-                            languageData={languageData || []}
-                            ageRatingData={ageRatingData || {
-                                certifications: {
-                                    US: []
-                                }
-                            }}
-                            searchSectionRef={searchSectionRef}
-                        />
-                        <Tesseract
-                            tesseractHookProps = {
-                                {
-                                    tesseractOpen: tesseractOpen,
-                                    setTesseractOpen: setTesseractOpen
-                                }
-                            }
-                        />
-                        <SearchResults
-                            searchedMovieProps={
-                                {
-                                    movieResponse: movieData || {
-                                        page: 0,
-                                        results: [],
-                                        total_pages: 0,
-                                        total_results: 0,
-                                    },
-                                    isPending: isPending,
-                                    isError: isError,
-                                }
-                            }
-                            paginationHookProps={
-                                {
-                                    pagination: pagination,
-                                    setPagination: setPagination
-                                }
-                            }
-                            languageData={languageData || []}
-                            movieResultRef={movieResultRef}
-                        />
-                        <Footer />
-                    </div>
-                </div>
+                            <NavBar />
+                            <BackToTopFab />
+
+                            {featureCardVisibleStatus ? (
+                                <FeatureGuideCard
+                                    featureGuideCardHookProps={{
+                                        featureCardVisibleStatus: featureCardVisibleStatus,
+                                        setFeatureCardVisibleStatus: setFeatureCardVisibleStatus,
+                                    }}
+                                />
+                            ) : null}
+
+                            <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+                                <Hero searchSectionRef={searchSectionRef}/>
+                                <Separator />
+                                <AdvancedSearch
+                                    searchTermHookProps={
+                                        {
+                                            searchTerm: searchTerm,
+                                            setSearchTerm: setSearchTerm
+                                        }
+                                    }
+                                    yearHookProps={
+                                        {
+                                            selectedYear: selectedYear,
+                                            setSelectedYear: setSelectedYear
+                                        }
+                                    }
+                                    genreHookProps={
+                                        {
+                                            selectedGenre: selectedGenre,
+                                            setSelectedGenre: setSelectedGenre
+                                        }
+                                    }
+                                    sortByHookProps={
+                                        {
+                                            selectedSortBy: selectedSortBy,
+                                            setSelectedSortBy: setSelectedSortBy
+                                        }
+                                    }
+                                    providerHookProps={
+                                        {
+                                            selectedProvider: selectedProvider,
+                                            setSelectedProvider: setSelectedProvider
+                                        }
+                                    }
+                                    languageHookProps={
+                                        {
+                                            selectedLanguage: selectedLanguage,
+                                            setSelectedLanguage: setSelectedLanguage
+                                        }
+                                    }
+                                    ageRatingHookProps={
+                                        {
+                                            selectedAgeRating: selectedAgeRating,
+                                            setSelectedAgeRating: setSelectedAgeRating
+                                        }
+                                    }
+                                    adultModeHookProps={
+                                        {
+                                            selectedAdultMode: selectedAdultMode,
+                                            setSelectedAdultMode: setSelectedAdultMode
+                                        }
+                                    }
+                                    paginationHookProps={
+                                        {
+                                            pagination: pagination,
+                                            setPagination: setPagination
+                                        }
+                                    }
+                                    tesseractHookProps={
+                                        {
+                                            tesseractOpen: tesseractOpen,
+                                            setTesseractOpen: setTesseractOpen
+                                        }
+                                    }
+                                    totalResults={movieData?.total_results || 0}
+                                    genreData={genreData || {
+                                        genres: []
+                                    }}
+                                    providerData={providerData || {
+                                        results: []
+                                    }}
+                                    languageData={languageData || []}
+                                    ageRatingData={ageRatingData || {
+                                        certifications: {
+                                            US: []
+                                        }
+                                    }}
+                                    searchSectionRef={searchSectionRef}
+                                />
+                                <Tesseract
+                                    tesseractHookProps = {
+                                        {
+                                            tesseractOpen: tesseractOpen,
+                                            setTesseractOpen: setTesseractOpen
+                                        }
+                                    }
+                                />
+                                <SearchResults
+                                    searchedMovieProps={
+                                        {
+                                            movieResponse: movieData || {
+                                                page: 0,
+                                                results: [],
+                                                total_pages: 0,
+                                                total_results: 0,
+                                            },
+                                            isPending: isPending,
+                                            isError: isError,
+                                        }
+                                    }
+                                    paginationHookProps={
+                                        {
+                                            pagination: pagination,
+                                            setPagination: setPagination
+                                        }
+                                    }
+                                    languageData={languageData || []}
+                                    movieResultRef={movieResultRef}
+                                />
+                                <Footer />
+                            </div>
+                        </div>
+
+                    </ContextMenuTrigger>
+                </ContextMenu>
 
             </TooltipProvider>
 

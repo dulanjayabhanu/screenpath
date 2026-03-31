@@ -12,7 +12,15 @@ const Footer = () => {
             <p className="text-muted-foreground py-1">
                 Your calm path to the perfect movie
             </p>
-            <div className="w-full md:w-xl lg:w-full grid grid-cols-2 lg:grid-cols-6 mx-auto gap-2 pt-4 pb-8">
+            <div className="w-full md:w-xl lg:w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 mx-auto gap-6 sm:gap-2 pt-4 pb-8">
+                <div className="flex flex-col gap-2 text-center lg:text-start">
+                    <h4 className="scroll-m-20 text-lg font-semibold tracking-tight py-2">
+                        ScreenPath
+                    </h4>
+                    <Link to={"/"} className="text-muted-foreground hover:underline hover:invert-10">Home</Link>
+                    <Link to={"/actors"} className="text-muted-foreground hover:underline hover:invert-10">Actors</Link>
+                    <Link to={"/crews"} className="text-muted-foreground hover:underline hover:invert-10">Directors & Crew</Link>
+                </div>
                 <div className="flex flex-col gap-2 text-center lg:text-start">
                     <h4 className="scroll-m-20 text-lg font-semibold tracking-tight py-2">
                         Community

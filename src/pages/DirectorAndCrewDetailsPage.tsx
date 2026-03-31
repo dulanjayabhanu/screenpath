@@ -1,65 +1,66 @@
+import {useParams} from "react-router";
+import {useQuery} from "@tanstack/react-query";
+import movieApiLanguageQueryOption from "@/query_options/movieApiLanguageQueryOption.ts";
+import movieApiSingleActorQueryOption from "@/query_options/movieApiSingleActorQueryOption.ts";
+import {useEffect} from "react";
+import BreadCrumb from "@/components/ui/custom/BreadCrumb.tsx";
+import ActorShowcase from "@/components/ui/custom/ActorShowcase.tsx";
+import {ThemeProvider} from "@/components/theme-provider.tsx";
 import {TooltipProvider} from "@/components/ui/tooltip.tsx";
 import GridPatternTop from "@/components/ui/custom/GridPatternTop.tsx";
 import GridPatternBottom from "@/components/ui/custom/GridPatternBottom.tsx";
 import NavBar from "@/components/ui/custom/NavBar.tsx";
 import BackToTopFab from "@/components/ui/custom/BackToTopFab.tsx";
-import Footer from "@/components/ui/custom/Footer.tsx";
-import {ThemeProvider} from "@/components/theme-provider.tsx";
-import ActorShowcase from "@/components/ui/custom/ActorShowcase.tsx";
-import BreadCrumb from "@/components/ui/custom/BreadCrumb.tsx";
-import ActorMovieCredits from "@/components/ui/custom/ActorMovieCredits.tsx";
-import {Separator} from "@/components/ui/separator.tsx";
-import {useParams} from "react-router";
-import movieApiSingleActorQueryOption from "@/query_options/movieApiSingleActorQueryOption.ts";
-import {useQuery} from "@tanstack/react-query";
 import ProgressSpinner from "@/components/ui/custom/ProgressSpinner.tsx";
 import ErrorAlert from "@/components/ui/custom/ErrorAlert.tsx";
-import movieApiLanguageQueryOption from "@/query_options/movieApiLanguageQueryOption.ts";
-import {useEffect} from "react";
+import {Separator} from "@/components/ui/separator.tsx";
+import Footer from "@/components/ui/custom/Footer.tsx";
+import DirectorAndCrewMovieCredits from "@/components/ui/custom/DirectorAndCrewMovieCredits.tsx";
 import {ContextMenu, ContextMenuTrigger} from "@/components/ui/context-menu.tsx";
 import MainContextMenu from "@/components/ui/custom/MainContextMenu.tsx";
 
-const ActorDetailsPage = () => {
-
-    const { actorId } = useParams()
+const DirectorAndCrewDetailsPage = () => {
+    const { crewId } = useParams()
 
     const { data: languageData } = useQuery(movieApiLanguageQueryOption())
-    const { data: actorData, isPending, isError } = useQuery(movieApiSingleActorQueryOption(actorId || ""))
+    const { data: crewData, isPending, isError } = useQuery(movieApiSingleActorQueryOption(crewId || ""))
 
     useEffect(() => {
-        document.title = `${isPending ? "Processing..." : actorData ? actorData.name || "N/A" : "Actor Credits" } - ScreenPath`
-    }, [isPending, actorData])
+        document.title = `${isPending ? "Processing..." : crewData ? crewData.name || "N/A" : "Crew Credits" } - ScreenPath`
+    }, [isPending, crewData])
 
     const renderDynamicComponents = () => {
         return (
             <>
                 <BreadCrumb endpoints={[
                     {
-                        path: "/actors",
-                        name: "The Actors",
+                        path: "/crews",
+                        name: "The Directors & Crew",
                     },
                     {
-                        name: actorData?.name || "N/A",
+                        name: crewData?.name || "N/A",
                     }
                 ]}/>
                 <ActorShowcase
-                    name={actorData?.name || "N/A"}
-                    gender={actorData?.gender || 2}
-                    birthday={actorData?.birthday || ""}
-                    knownAs={actorData?.also_known_as || []}
-                    biography={actorData?.biography || "N/A"}
-                    placeOfBirth={actorData?.place_of_birth || "N/A"}
-                    deathDay={actorData?.deathday || ""}
-                    homePage={actorData?.homepage || ""}
-                    imdbId={actorData?.imdb_id || ""}
-                    profilePath={actorData?.profile_path || ""}
+                    name={crewData?.name || "N/A"}
+                    gender={crewData?.gender || 2}
+                    birthday={crewData?.birthday || ""}
+                    knownAs={crewData?.also_known_as || []}
+                    biography={crewData?.biography || "N/A"}
+                    placeOfBirth={crewData?.place_of_birth || "N/A"}
+                    deathDay={crewData?.deathday || ""}
+                    homePage={crewData?.homepage || ""}
+                    imdbId={crewData?.imdb_id || ""}
+                    profilePath={crewData?.profile_path || ""}
                 />
-                <ActorMovieCredits
-                    movieCredits={actorData?.movie_credits || {
+                <DirectorAndCrewMovieCredits
+                    movieCredits={crewData?.movie_credits || {
                         cast: [],
                         crew: []
                     }}
                     languageData={languageData || []}
+                    gender={crewData?.gender || 2}
+                    profilePath={crewData?.profile_path || ""}
                 />
             </>
         )
@@ -74,7 +75,7 @@ const ActorDetailsPage = () => {
                     <ContextMenuTrigger>
 
                         <MainContextMenu
-                            reloadPath={`/actor/${actorId}`}
+                            reloadPath={`/crew/${crewId}`}
                         />
 
                         <div className="min-h-screen relative">
@@ -110,4 +111,4 @@ const ActorDetailsPage = () => {
     )
 }
 
-export default ActorDetailsPage
+export default DirectorAndCrewDetailsPage
