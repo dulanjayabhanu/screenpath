@@ -4,6 +4,7 @@ import {ChartSpline} from "lucide-react";
 import type {CrewCardProps} from "@/types/props/CrewCardProps.ts";
 import type {GenderDefaultValues} from "@/types/GenderDefaultValues.ts";
 import genderDefaultValues from "@/constants/genderDefaultValues.ts";
+import {useNavigate} from "react-router";
 
 const CrewCard = ( { crewMember }: CrewCardProps ) => {
     const { female }: GenderDefaultValues = genderDefaultValues()
@@ -14,8 +15,12 @@ const CrewCard = ( { crewMember }: CrewCardProps ) => {
         `${MOVIE_API_BASE_POSTER_URL}${MOVIE_API_POSTER_W1280}${crewMember.profile_path}` :
         crewMember.gender === female ? "/default_female_banner.svg" : "/default_male_banner.svg"
 
+    const navigate = useNavigate()
+
     return (
-        <Card className="relative w-full max-w-50 pt-0 group">
+        <Card className="relative w-full max-w-50 pt-0 group" onClick={() =>
+            navigate(`/crew/${crewMember.id}`)
+        }>
             <img
                 src={posterUrl || "/test_banner.webp"}
                 alt={crewMember.name || "N/A"}
@@ -23,11 +28,11 @@ const CrewCard = ( { crewMember }: CrewCardProps ) => {
                 className="relative z-20 aspect-square h-50 w-full object-cover brightness-60 group-hover:grayscale-0 group-hover:brightness-95 grayscale dark:brightness-40 dark:group-hover:brightness-90 transition-all duration-300 rounded-t-lg"
             />
             <CardHeader>
-                <CardTitle className="flex flex-row">
+                <CardTitle className="flex flex-row overflow-x-hidden">
                     <span className="w-full max-w-35 truncate">{crewMember.name || "N/A"}</span>
                 </CardTitle>
-                <CardDescription>
-                    <p className="leading-7 text-muted-foreground text-justify sm:text-start">{crewMember.job}</p>
+                <CardDescription className="overflow-x-hidden">
+                    <p className="leading-7 text-muted-foreground text-justify sm:text-start w-full max-w-38 truncate ">{crewMember.job}</p>
                     <p className="leading-7 text-muted-foreground text-justify sm:text-start text-xs mt-2">{crewMember.department} Dep.</p>
                     <div className="flex justify-end">
                         <Badge variant="secondary" className="flex gap-2">

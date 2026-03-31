@@ -33,7 +33,7 @@ const SearchFilterCard = (
 
     const sortedLanguages: Language[] = languageSort(languages, "ASC")
 
-    const resetFilters = () => { // <=
+    const resetFilters = () => {
         const defaultValues = searchFilterDefaultValues()
 
         searchTermHookProps.setSearchTerm(defaultValues.searchTerm)
@@ -76,7 +76,7 @@ const SearchFilterCard = (
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
                     <Field>
                         <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
                             Year
@@ -183,7 +183,7 @@ const SearchFilterCard = (
                             </SelectContent>
                         </Select>
                     </Field>
-                    <FieldLabel htmlFor="switch-share" className="col-span-2 md:col-span-3">
+                    <FieldLabel htmlFor="switch-share" className="col-span-1 sm:col-span-2 md:col-span-3">
                         <Field orientation="horizontal">
                             <FieldContent>
                                 <FieldTitle>

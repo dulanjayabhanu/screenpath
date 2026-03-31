@@ -7,6 +7,8 @@ import {ThemeProvider} from "@/components/theme-provider.tsx";
 import {useEffect} from "react";
 import TermsContent from "@/components/ui/custom/TermsContent.tsx";
 import BackToTopFab from "@/components/ui/custom/BackToTopFab.tsx";
+import {ContextMenu, ContextMenuTrigger} from "@/components/ui/context-menu.tsx";
+import MainContextMenu from "@/components/ui/custom/MainContextMenu.tsx";
 
 const TermsPage = () => {
     useEffect(() => {
@@ -16,19 +18,29 @@ const TermsPage = () => {
     return (
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
 
-            <div className="min-h-screen relative">
-                <GridPatternTop/>
-                <GridPatternBottom/>
+            <ContextMenu>
+                <ContextMenuTrigger>
 
-                <NavBar />
-                <BackToTopFab />
+                    <MainContextMenu
+                        reloadPath={"/terms"}
+                    />
 
-                <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 overflow-x-hidden">
-                    <TermsContent />
-                    <Separator />
-                    <Footer />
-                </div>
-            </div>
+                    <div className="min-h-screen relative">
+                        <GridPatternTop/>
+                        <GridPatternBottom/>
+
+                        <NavBar />
+                        <BackToTopFab />
+
+                        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+                            <TermsContent />
+                            <Separator />
+                            <Footer />
+                        </div>
+                    </div>
+
+                </ContextMenuTrigger>
+            </ContextMenu>
 
         </ThemeProvider>
     )

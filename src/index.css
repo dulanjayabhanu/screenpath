@@ -205,4 +205,21 @@
   .cast-image{
     @apply aspect-3/4 h-fit w-fit max-w-50 object-cover brightness-60 hover:grayscale-0 hover:brightness-95 grayscale dark:brightness-40 dark:hover:brightness-90;
   }
+  .scroll-mask{
+    -webkit-mask-image: linear-gradient(
+            to bottom,
+            #0a0a0a 0%,
+            #0a0a0a 75%,
+            transparent 100%
+    );
+    mask-image: linear-gradient(
+            to bottom,
+            #0a0a0a 0%,
+            #0a0a0a 75%,
+            transparent 100%
+    );
+  }
+  .fallback-wrapper{
+    @apply flex h-dvh bg-primary justify-center items-center col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4 py-15;
+  }
 }

@@ -24,6 +24,8 @@ import useYoutubeVideoPlayerOpen from "@/hooks/useYoutubeVideoPlayerOpen.ts";
 import {useEffect} from "react";
 import BackToTopFab from "@/components/ui/custom/BackToTopFab.tsx";
 import movieApiLanguageQueryOption from "@/query_options/movieApiLanguageQueryOption.ts";
+import {ContextMenu, ContextMenuTrigger} from "@/components/ui/context-menu.tsx";
+import MainContextMenu from "@/components/ui/custom/MainContextMenu.tsx";
 
 const MoviesPage = () => {
     const { movieId } = useParams<{ movieId: string }>()
@@ -48,7 +50,11 @@ const MoviesPage = () => {
     const renderMovieContent = () => {
         return (
             <>
-                <BreadCrumb movieName={data?.title || "N/A"}/>
+                <BreadCrumb endpoints={[
+                    {
+                        name: data?.title || "N/A",
+                    }
+                ]}/>
                 <MovieShowcase
                     backdrop_path={data?.backdrop_path || null}
                     title={data?.title || ""}
@@ -137,29 +143,39 @@ const MoviesPage = () => {
     return (
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
 
-            <div className="min-h-screen relative">
-                <GridPatternTop/>
-                <GridPatternBottom/>
+            <ContextMenu>
+                <ContextMenuTrigger>
 
-                <NavBar />
-                <BackToTopFab />
+                    <MainContextMenu
+                        reloadPath={`/movies/${movieId}`}
+                    />
 
-                <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 overflow-x-hidden">
-                    {isPending ? (
-                        <div className="flex flex-col items-center justify-center h-svh">
-                            <ProgressSpinner/>
+                    <div className="min-h-screen relative">
+                        <GridPatternTop/>
+                        <GridPatternBottom/>
+
+                        <NavBar />
+                        <BackToTopFab />
+
+                        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+                            {isPending ? (
+                                <div className="flex flex-col items-center justify-center h-svh">
+                                    <ProgressSpinner/>
+                                </div>
+                            ) : isError ? (
+                                <div className="flex justify-center items-center col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4 py-15">
+                                    <ErrorAlert/>
+                                </div>
+                            ) : (
+                                renderMovieContent()
+                            )}
+                            <Separator />
+                            <Footer />
                         </div>
-                    ) : isError ? (
-                        <div className="flex justify-center items-center col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4 py-15">
-                            <ErrorAlert/>
-                        </div>
-                    ) : (
-                        renderMovieContent()
-                    )}
-                    <Separator />
-                    <Footer />
-                </div>
-            </div>
+                    </div>
+
+                </ContextMenuTrigger>
+            </ContextMenu>
 
         </ThemeProvider>
     )

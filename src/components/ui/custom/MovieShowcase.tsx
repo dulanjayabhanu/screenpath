@@ -47,7 +47,7 @@ const MovieShowcase = (
             </div>
             <div className="flex flex-col items-center w-full gap-4">
                 <div className="flex flex-col items-start justify-start gap-4 pb-4">
-                    <h1 className="scroll-m-20 text-center self-center sm:self-start text-4xl font-extrabold tracking-tight text-balance sm:text-[min(10vw,70px)]">
+                    <h1 className="scroll-m-20 text-center self-center sm:text-start sm:self-start text-4xl font-extrabold tracking-tight text-balance sm:text-[min(10vw,70px)]">
                         {title}
                     </h1>
                     <h3 className="scroll-m-20 border-b pb-2 self-center sm:self-start text-lg sm:text-3xl font-semibold tracking-tight first:mt-0">
