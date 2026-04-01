@@ -147,13 +147,40 @@ Each movie includes a dedicated detail page containing essential information suc
 
 The layout focuses on presenting this information in a clear and organized manner.
 
-### 4. Embedded Trailer Playback
+### 4. Actor Discovery
+
+Users can search and explore actors through a dedicated interface.
+
+Actor results are presented in a structured layout that highlights key information and allows quick navigation.
+
+Each actor includes a detailed page with:
+
+* profile image
+* biography
+* known works
+* popularity and basic metadata
+
+This feature allows users to explore filmography and discover content through people rather than only movies.
+
+### 5. Director and Crew Discovery
+
+ScreenPath also provides the ability to explore directors and crew members.
+
+Users can search for crew members and access individual detail pages that include:
+
+* profile information
+* role and department
+* known works and contributions
+
+This enables deeper exploration of the creative individuals behind movies.
+
+### 6. Embedded Trailer Playback
 
 ScreenPath allows users to watch official movie trailers directly within the application interface.
 
 Trailer videos are embedded using the YouTube player, enabling users to view trailers without leaving the platform or opening external websites.
 
-### 5. Responsive Interface
+### 7. Responsive Interface
 
 ScreenPath is designed to function across multiple device sizes.
 
@@ -163,9 +190,39 @@ The interface adapts automatically to:
 * tablets
 * mobile devices
 
-Responsive layouts ensure the browsing experience remains consistent and accessible regardless of device.
+Recent improvements include:
 
-### 6. Dark and Light Modes
+* optimized navigation with a dedicated mobile menu
+* adaptive hero section layout based on screen size
+* improved card layouts for better readability on small screens
+* consistent spacing and alignment across components
+
+These updates ensure the browsing experience remains clear and accessible regardless of device.
+
+### 8. Guided Interaction
+
+ScreenPath provides contextual guidance to help users discover available interactions.
+
+Users can access quick navigation options through:
+
+* right-click interaction on desktop devices
+* press and hold interaction on touch devices
+
+The guide adapts based on the device type and is positioned to ensure visibility without interrupting the browsing experience.
+
+### 9. Focused User Experience
+
+The application is designed around a distraction-free browsing concept.
+
+Key interface behaviors include:
+
+* highlighting one primary component at a time
+* reducing unnecessary visual clutter
+* using subtle interactive elements to guide attention
+
+These design choices help users explore content more efficiently and make quicker viewing decisions.
+
+### 10. Dark and Light Modes
 
 The platform supports both dark and light themes.
 
