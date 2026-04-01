@@ -17,7 +17,7 @@ const ProductionCompony = ( { productionCompany }: ProductionCompanyProps ) => {
                 </div>
                 ) : (
                 <div className={finalClassName}>
-                    <ItemGroup className="grid grid-cols-3 lg:grid-cols-4 gap-4">
+                    <ItemGroup className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         {productionCompany?.map(company => {
                             const MOVIE_API_BASE_POSTER_URL: string = import.meta.env.VITE_MOVIE_API_BASE_POSTER_URL
                             const MOVIE_API_POSTER_W500: string = import.meta.env.VITE_MOVIE_API_POSTER_W500
@@ -37,9 +37,9 @@ const ProductionCompony = ( { productionCompany }: ProductionCompanyProps ) => {
                                     </ItemHeader>
                                     <ItemContent className="flex flex-col items-center gap-2">
                                         <ItemTitle className="text-center">{company.name}</ItemTitle>
-                                        <ItemDescription className="flex flex-row justify-start items-center gap-1">
+                                        <ItemDescription className="flex flex-row justify-start items-center gap-1 overflow-x-hidden">
                                             <Globe size={12}/>
-                                            <span className="lowercase">{company.origin_country}</span>
+                                            <span className="lowercase truncate">{company.origin_country}</span>
                                         </ItemDescription>
                                     </ItemContent>
                                 </Item>
