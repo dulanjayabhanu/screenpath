@@ -35,7 +35,7 @@ const AdvancedSearch = (
 
             <div className="flex flex-col w-full gap-4 items-center justify-center pb-5">
                 <EyeClosed size={40} />
-                <div className="flex gap-2">
+                <div className="hidden md:flex gap-2">
                     <h1 className="scroll-m-20 text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-balance">
                         Search Without
                     </h1>
@@ -43,7 +43,12 @@ const AdvancedSearch = (
                         Distractions
                     </h1>
                 </div>
-                <p className="leading-6 sm:leading-7 not-first:mt-2 text-muted-foreground text-justify sm:text-center max-w-3xl text-md">
+                <div className="flex md:hidden gap-2">
+                    <h1 className="scroll-m-20 text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-balance">
+                        Search Without Distractions
+                    </h1>
+                </div>
+                <p className="leading-6 sm:leading-7 not-first:mt-2 text-muted-foreground text-center max-w-3xl text-md">
                     A calm black-and-white interface that highlights new releases, lets you filter movies easily, and shows official trailers and key details, helping you focus on discovering the movies that truly matter.
                 </p>
                 <Separator className="my-10 sm:my-15"/>
